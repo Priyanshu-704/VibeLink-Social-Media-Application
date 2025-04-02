@@ -1,0 +1,117 @@
+.profileinfo {
+  height: 300px;
+  width: 1000px;
+  max-width: 100%;
+  margin: 1rem auto;
+  border-radius: 20px;
+}
+
+.profileinfo-container {
+  display: flex;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.profileinfo-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileinfo-bottom {
+  margin-top: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.profileinfo-bottomleft {
+  /* background-color: crimson; */
+  flex: 0.33;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profileinfo-bottomcenter {
+  flex: 0.33;
+}
+
+.profileinfo-bottomright {
+  flex: 0.33;
+}
+.profileinfo-top {
+  height: 200px;
+  width: 100%;
+  border-bottom: 4px solid white;
+}
+
+.profileinfo-top img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+.profileinfo-centeravatar {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-top: 10px solid rgb(189, 57, 241);
+  border-left: 10px solid rgb(108, 34, 168);
+  border-right: 10px solid rgb(241, 57, 216);
+  border-bottom: 10px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  padding: 1px;
+  transform: translateY(-40px);
+}
+
+.profileinfo-centerbutton {
+  position: absolute;
+  transform: translateX(200px);
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  border: 3px solid rgb(108, 34, 168);
+  border-radius: 10px;
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.profileinfo-stat {
+  /* background-color: crimson; */
+  padding: 5px;
+  /* color: white; */
+}
+.profileinfo-statenumber {
+  font-size: large;
+  text-align: center;
+  font-weight: 600;
+  color:rgb(0, 0, 0);
+}
+
+.profileinfo-statedesc {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 300;
+  text-transform: capitalize;
+  /* letter-spacing: 2px; */
+  color:rgb(0, 0, 0);
+}
+
+.profileinfo-fullname {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.profileinfo-username {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: small;
+  font-weight: 300;
+}
