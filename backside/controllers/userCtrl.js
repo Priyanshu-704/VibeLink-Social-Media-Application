@@ -25,20 +25,20 @@ const userCtrl = {
           return res.status(500).json({msg: err.message})
       }
   },
-  // updateUser: async (req,res) =>{
-  //     try {
+  updateUser: async (req,res) =>{
+      try {
 
-  //         const { website, fullname, story, phone, address } =req.body;
-  //         if(!fullname)  return res.status(500).json({msg: "Fullname is requires"})
+          const { website, fullname, story, phone, address } =req.body;
+          if(!fullname)  return res.status(500).json({msg: "Fullname is requires"})
 
-  //         const user = await Users.findOneAndUpdate({_id: req.body._id},{
-  //             website, fullname, story, phone, address
-  //         })
+          const user = await Users.findOneAndUpdate({_id: req.body._id},{
+              website, fullname, story, phone, address
+          })
 
-  //         res.json({msg:'update success', user})
-  //     } catch (err) {
-  //         return res.status(500).json({msg: err.message})
-  //     }
-  // },
+          res.json({msg:'update success', user})
+      } catch (err) {
+          return res.status(500).json({msg: err.message})
+      }
+  },
 };
 module.exports = userCtrl;

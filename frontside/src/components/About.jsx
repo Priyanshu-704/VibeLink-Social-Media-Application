@@ -1,31 +1,19 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProfileUsers } from "../redux/actions/profileActions";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import { getProfileUsers } from "../redux/actions/profileActions";
 import "../styles/ProfileAbout.css"
 
-const About = () => {
-  const [userData, setUserData] = useState([]);
-  const { id } = useParams();
-  const { auth, profile } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (auth && auth.user && id === auth.user._id) {
-      setUserData([auth.user]);
-    } else {
-      dispatch(getProfileUsers({ users: profile.user, id, auth }));
-      const newData = profile.users.filter((user) => user._id === id);
-      setUserData(newData);
-    }
-  }, [id, auth.user, auth]);
-
+const About = ({userData, profile, auth, id}) => {
+  
   return (
     <div className="about">
       {userData.length > 0 &&
-        userData.map((user) => {
+        userData.map((user, index) => {
           return (
-            <div className="about-container" key={user._id}>
+            <div className="about-container" key={`${user._id}-${index}`}>
               <div className="about-contenttop">
                 <h4 className="about-contenttop-head">About Me:</h4>
               </div>
