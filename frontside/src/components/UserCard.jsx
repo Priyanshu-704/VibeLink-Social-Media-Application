@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Avatar } from "@mui/material";
 import "react";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ const UserCard = ({ user, handleClose }) => {
             alignItems: "center",
           }}
         >
-          <Avatar src={user.avatar || ProfileImg} />
+          <Avatar src={user.avatar || ProfileImg } />
           <div style={{ marginLeft: "6px", color: "white" }}>
             <span
               style={{

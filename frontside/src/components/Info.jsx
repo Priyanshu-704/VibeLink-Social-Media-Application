@@ -35,12 +35,12 @@ const Info = ({userData, profile, auth, id}) => {
           return (
             <div className="profileinfo-container" key={`${user._id}-${index}`}>
               <div className="profileinfo-top">
-                <img src={user.avatar || ProfileImg} alt="" />
+                <img src={user.avatar || ProfileImg } alt="" />
               </div>
               <div className="profileinfo-center">
                 <img
                   className="profileinfo-centeravatar"
-                  src={user.avatar || ProfileImg}
+                  src={user.avatar || ProfileImg }
                   alt=""
                 />
                  { user && auth && user?._id === auth.user._id ?

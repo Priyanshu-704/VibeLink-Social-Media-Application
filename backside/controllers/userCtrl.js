@@ -15,6 +15,8 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
+
   getUser: async (req,res)=>{
       try {
           const user =  await Users.findOne({_id : req.params.id})
@@ -25,6 +27,8 @@ const userCtrl = {
           return res.status(500).json({msg: err.message})
       }
   },
+
+
   updateUser: async (req,res) =>{
       try {
 
@@ -40,5 +44,49 @@ const userCtrl = {
           return res.status(500).json({msg: err.message})
       }
   },
+
+
+  friend: async (req,res) =>{
+    try {
+       
+        const user = await Users.find({_id: req.params.id, friends: req.user._id} )
+        if(user.length > 0) return res.status(400).json({msg: "you have already followed"})
+
+        const newUser = await Users.findOneAndUpdate({_id: req.params.id},{
+            $push: {friends: req.user._id}
+        },{ new: true})
+
+        await Users.findOneAndUpdate({_id: req.user._id},{
+            $push:{following: req.params.id}
+        },{ new: true})
+
+
+        res.json({msg: "friend added"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+},
+
+
+
+unfriend: async (req,res) =>{
+    try {     
+
+        const newUser = await Users.findOneAndUpdate({_id: req.params.id},{
+            $pull:{friends: req.user._id}
+        },{ new: true})
+
+        await Users.findOneAndUpdate({_id: req.user._id},{
+            $pull:{following: req.params.id}
+        },{ new: true})
+
+
+        res.json({msg: "friend removed"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+}
+
+
 };
 module.exports = userCtrl;
