@@ -54,23 +54,27 @@ export const refreshToken = () => async( dispatch) => {
   })
 
   try {
-      const res = await postDataApi('refresh_token');
+    const { token } = getState().auth;
+      
+      const res = await postDataApi('refresh_token', null, token);
       dispatch({
           type: 'AUTH',
           payload:{
               token:res.data.access_token,
               user: res.data.user
           } 
-      })
+      });
       dispatch({
           type:ALERT_TYPES.ALERT,
           payload:{
               success:res.data.msg
           }
-      })
+      });
 
   } catch (error) {
       console.log(error)
+      localStorage.removeItem('login');
+      
       dispatch({
           type:'ALERT',
           payload:{

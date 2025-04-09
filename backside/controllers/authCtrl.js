@@ -52,7 +52,7 @@ const authCtrl = {
         },
       });
     } catch (err) {
-      res.status(500).json({ msg: err.message });
+     return res.status(500).json({ msg: err.message });
     }
   },
   login: async (req, res) => {
@@ -88,7 +88,7 @@ const authCtrl = {
         },
       });
     } catch (err) {
-      res.status(500).json({ msg: err.message });
+     return res.status(500).json({ msg: err.message });
     }
   },
 
@@ -97,7 +97,7 @@ const authCtrl = {
       res.clearCookie("refreshtoken", { path: "/api/refresh_token" });
       res.json({ msg: "Logged out" });
     } catch (err) {
-      res.status(500).json({ msg: err.message });
+      return res.status(500).json({ msg: err.message });
     }
   },
   generateAccessToken: async (req, res) => {
@@ -128,7 +128,7 @@ const authCtrl = {
         }
       );
     } catch (err) {
-      res.status(500).json({ msg: err.message });
+      return res.status(500).json({ msg: err.message });
     }
   },
 };
