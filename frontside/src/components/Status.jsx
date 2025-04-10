@@ -195,7 +195,7 @@ const handleSubmit = (e) => {
             </span>
           </div>
           <div className="status-footerleft">
-            <button className="status-footerleftdiscard">Discard</button>
+            <button className="status-footerleftdiscard" onClick= {handleDiscard}>Discard</button>
             <button className="status-footerleftcreate" type="submit">
               Create
             </button>
