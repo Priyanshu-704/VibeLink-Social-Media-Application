@@ -8,12 +8,16 @@ export const getDataApi = async (url, token) => {
   return res;
 };
 
-export const postDataApi = async (url, post, token) => {
-  const res = await axios.post(`/api/${url}`, post, {
-    headers: { Authorization: `Bearer ${token}`  },
-  });
-  console.log(res);   
-  return res;
+export const postDataApi = async (url, data, token) => {
+  const headers = {
+    Authorization: token,
+  };
+  
+  if (!(data instanceof FormData)) {
+    headers["Content-Type"] = "application/json";
+  }
+
+  return await axios.post(`/api/${url}`, data, { headers });
 };
 
 export const putDataApi = async (url, post, token) => {
