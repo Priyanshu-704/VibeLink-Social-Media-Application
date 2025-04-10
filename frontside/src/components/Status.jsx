@@ -91,18 +91,27 @@ const Status = () => {
     console.log(images);
   };
 
-  const handleSubmit = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
-
     if (images.length === 0) {
-      dispatch({
-        type: "ALERT",
-        payload: { error: "add your image" },
-      });
+      dispatch({ type: "ALERT", payload: { error: "add your image" } });
     } else {
       dispatch(createpost({ content, images, auth }));
+      setContent('')
+      setImages([])
+      if(tracks) tracks.stop()
     }
+    setContent('')
+    setImages([])
+    if(tracks) tracks.stop()
   };
+
+  const handleDiscard = (e) =>{
+    e.preventDefault();
+    setContent('')
+    setImages([])
+    if(tracks) tracks.stop()
+}
 
   return (
     <div className="status">
@@ -125,7 +134,8 @@ const Status = () => {
         <div className="status-imagesdiv">
           {images &&
             images.map((image, index) => (
-              <div className="status-middleimagecontainer">
+            <div className="status-middleimagecontainer"
+              key={image.camera ? `camera-${index}` : `file-${index}`}>
                 <img
                   className="status-middleimages"
                   src={image.camera ? image.camera : URL.createObjectURL(image)}
