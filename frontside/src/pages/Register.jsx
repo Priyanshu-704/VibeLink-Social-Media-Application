@@ -32,7 +32,7 @@ const Register = () => {
 
   useEffect(()=>{
     if(auth.token){
-      navigate.push('/')
+      navigate('/')
     }
   },[auth.token, navigate])
 
