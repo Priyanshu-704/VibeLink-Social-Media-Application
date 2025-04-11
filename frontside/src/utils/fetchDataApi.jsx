@@ -2,7 +2,7 @@ import axios from "./axios";
 
 export const getDataApi = async (url, token) => {
   const res = await axios.get(`/api/${url}`, {
-    headers: { Authorization: `Bearer ${token}`  },
+    headers: { Authorization: `${token}`  },
   });
   
   return res;
